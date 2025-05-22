@@ -1,0 +1,24 @@
+{
+  "name": "redis-hashmap-benchmark",
+  "version": "1.0.0",
+  "description": "Benchmark Redis MULTI vs EVALSHA for hashmap queries",
+  "main": "src/benchmark.js",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start-redis": "./scripts/start-redis.sh",
+    "stop-redis": "./scripts/stop-redis.sh",
+    "setup": "node scripts/setup-data.js",
+    "benchmark": "node src/benchmark.js",
+    "test": "npm run setup && npm run benchmark"
+  },
+  "dependencies": {
+    "redis": "^4.6.12",
+    "benchmark": "^2.1.4"
+  },
+  "devDependencies": {
+    "@types/benchmark": "^2.1.5"
+  }
+}
