@@ -1,0 +1,21 @@
+{
+  "name": "redis-hashmap-benchmark",
+  "version": "1.0.0",
+  "description": "Benchmark Redis hashmap queries: MULTI vs Lua script",
+  "main": "src/benchmark.js",
+  "type": "module",
+  "scripts": {
+    "setup": "node src/setup-redis.js",
+    "benchmark": "node src/benchmark.js",
+    "start-redis": "sh scripts/start-redis.sh",
+    "stop-redis": "sh scripts/stop-redis.sh",
+    "test": "npm run start-redis && npm run setup && npm run benchmark && npm run stop-redis"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "redis": "^4.6.10",
+    "tinybench": "^2.5.1"
+  }
+}

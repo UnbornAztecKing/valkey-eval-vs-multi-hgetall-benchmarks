@@ -1,0 +1,9 @@
+
+## Test Data
+
+The benchmark tests three hashmap sizes:
+- 2,000 fields
+- 4,000 fields
+- 10,000 fields
+
+Each test creates two hashmaps and measures the performance of retrieving both.
