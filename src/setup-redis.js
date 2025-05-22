@@ -15,16 +15,17 @@ async function setupRedis() {
   const sizes = [2000, 4000, 10000];
   
   for (const size of sizes) {
-    const hash1Data = {};
-    const hash2Data = {};
-    
-    for (let i = 0; i < size; i++) {
-      hash1Data[`field${i}`] = `value${i}_hash1`;
-      hash2Data[`field${i}`] = `value${i}_hash2`;
+    // Create 4 pairs of hashes per size
+    for (let pair = 1; pair <= 4; pair++) {
+      const hashAData = {};
+      const hashBData = {};
+      for (let i = 0; i < size; i++) {
+        hashAData[`field${i}`] = `value${i}_pair${pair}a`;
+        hashBData[`field${i}`] = `value${i}_pair${pair}b`;
+      }
+      await client.hSet(`hash${size}_${pair}a`, hashAData);
+      await client.hSet(`hash${size}_${pair}b`, hashBData);
     }
-    
-    await client.hSet(`hash1_${size}`, hash1Data);
-    await client.hSet(`hash2_${size}`, hash2Data);
     
     console.log(`Created hashmaps of size ${size}`);
   }

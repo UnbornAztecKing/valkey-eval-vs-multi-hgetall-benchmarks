@@ -24,22 +24,25 @@ async function runBenchmarks() {
     
     const bench = new Bench({ time: 5000 }); // 5 seconds per benchmark
     
-    const key1 = `hash1_${size}`;
-    const key2 = `hash2_${size}`;
-
-    // Method 1: MULTI approach
-    bench.add('MULTI approach', async () => {
-      const multi = client.multi();
-      multi.hGetAll(key1);
-      multi.hGetAll(key2);
-      await multi.exec();
+    // Concurrent HGETALLs
+    bench.add('Concurrent HGETALL', async () => {
+      await Promise.all(Array(4).fill().map(async () => {
+        const multi = client.multi();
+        const pair = Math.floor(Math.random() * 4) + 1;
+        multi.hGetAll(`hash${size}_${pair}a`);
+        multi.hGetAll(`hash${size}_${pair}b`);
+        await multi.exec();
+      }));
     });
 
-    // Method 2: Lua script approach
-    bench.add('Lua EVALSHA approach', async () => {
-      await client.evalSha(scriptSha, {
-        keys: [key1, key2]
-      });
+    // Concurrent EVALSHA
+    bench.add('Concurrent EVALSHA', async () => {
+      await Promise.all(Array(4).fill().map(async () => {
+        const pair = Math.floor(Math.random() * 4) + 1;
+        await client.evalSha(scriptSha, {
+          keys: [`hash${size}_${pair}a`, `hash${size}_${pair}b`]
+        });
+      }));
     });
 
     await bench.warmup();
