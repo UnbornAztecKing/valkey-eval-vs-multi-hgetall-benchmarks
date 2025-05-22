@@ -1,9 +1,0 @@
-
-## Manual Steps
-
-- Setup data only: `npm run setup`
-- Run benchmarks only: `npm run benchmark`
-
-## Test Data
-
-Creates hashmaps of sizes: 2000, 4000, and 10000 key-value pairs.
