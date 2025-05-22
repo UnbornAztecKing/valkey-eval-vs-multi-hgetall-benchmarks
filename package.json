@@ -12,7 +12,7 @@
     "test": "npm run start-redis && npm run setup && npm run benchmark && npm run stop-redis"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "dependencies": {
     "redis": "^4.6.10",
