@@ -1,0 +1,5 @@
+.aider*
+*.log
+*.rdb
+node_modules
+
