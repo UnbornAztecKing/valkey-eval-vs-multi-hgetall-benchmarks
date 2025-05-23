@@ -11,17 +11,29 @@ Benchmarks comparing concurrent query methods for multiple Valkey/Redis hashmaps
 
 ## Setup & Running
 
-`nvm use`
+```
+nvm use
+```
 
-`npm install`
+```
+npm install
+```
 
-`npm run start-valkey`
+```
+npm run start-valkey
+```
 
-`npm run setup-valkey`
+```
+npm run setup-valkey
+```
 
-`npm run benchmark`
+```
+npm run benchmark
+```
 
-`npm run stop-valkey`
+```
+npm run stop-valkey
+```
 
 ## Multi-threaded Valkey Server Behavior
 
