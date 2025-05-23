@@ -1,13 +1,13 @@
-# Redis Hashmap Benchmark
+# Valkey Hashmap Benchmark
 
-Benchmarks comparing two methods of querying multiple Redis hashmaps:
-1. Using MULTI to execute multiple HGETALL commands
-2. Using EVALSHA to execute a Lua script server-side
+Benchmarks comparing concurrent query methods for multiple Valkey/Redis hashmaps:
+1. **Concurrent HGETALL**: Using MULTI to batch multiple HGETALL commands
+2. **Concurrent EVALSHA**: Using Lua script execution server-side
 
 ## Prerequisites
 
-- Node.js 20+ 
-- Redis server
+- nvm (Node Version Manager)
+- Valkey/Redis server
 
-## Installation
+## Setup & Running
 
