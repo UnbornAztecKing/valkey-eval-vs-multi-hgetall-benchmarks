@@ -1,15 +1,15 @@
 {
-  "name": "redis-hashmap-benchmark",
+  "name": "valkey-hashmap-benchmark",
   "version": "1.0.0",
   "description": "Benchmark Redis hashmap queries: MULTI vs Lua script",
   "main": "src/benchmark.js",
   "type": "module",
   "scripts": {
-    "setup": "node src/setup-redis.js",
+    "setup-valkey": "node src/setup-valkey.js",
     "benchmark": "node src/benchmark.js",
-    "start-redis": "sh scripts/start-redis.sh",
-    "stop-redis": "sh scripts/stop-redis.sh",
-    "test": "npm run start-redis && npm run setup && npm run benchmark && npm run stop-redis"
+    "start-valkey": "(cd valkey && sh start-valkey.sh)",
+    "stop-valkey": "sh valkey/stop-valkey.sh",
+    "test": "npm run start-valkey && npm run setup && npm run benchmark && npm run stop-valkey"
   },
   "engines": {
     "node": ">=22.0.0"
